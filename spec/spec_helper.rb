@@ -13,3 +13,7 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
 end
+
+RakutenApi.configure do |config|
+  config.app_id = "f65225878f2d961f275d8d2c8f1b7256"
+end
