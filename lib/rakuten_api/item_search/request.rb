@@ -1,16 +1,14 @@
 # coding: utf-8
 
-require 'json'
-
 module RakutenApi
   module ItemSearch
     class Request
       def initialize(application_id = nil, affiliate_id = nil)
         init_params(application_id, affiliate_id)
+        yield @params if block_given?
       end
 
       def get
-        yield @params if block_given?
         connection.get('/services/api/IchibaItem/Search/20120723', @params.to_hash)
       end
 
