@@ -13,5 +13,9 @@ describe RakutenApi::ItemSearch::Request do
     }
     it { response.should be_kind_of ::Faraday::Response }
     it { JSON.parse(response.body)['hits'].should eql 1 }
+
+    it "bad request" do
+      described_class.new.get.status.should eql 400
+    end
   end
 end
