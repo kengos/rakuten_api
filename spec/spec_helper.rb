@@ -5,6 +5,7 @@ begin
 rescue Exception
 end
 
+require 'faraday'
 require File.expand_path(File.dirname(__FILE__) + '/../lib/rakuten_api')
 
 RSpec.configure do |config|
@@ -15,5 +16,5 @@ RSpec.configure do |config|
 end
 
 RakutenApi.configure do |config|
-  config.app_id = "f65225878f2d961f275d8d2c8f1b7256"
+  config.app_id = "16d8dfe13fde99ac5479d789764d2f7a"
 end
