@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'json'
 
-describe RakutenApi::ItemSearch::Request do
+describe RakutenApi::ItemSearch::Client do
   describe '#get' do
     let(:response) {
       described_class.new do |params|
@@ -17,5 +17,15 @@ describe RakutenApi::ItemSearch::Request do
     it "bad request" do
       described_class.new.get.status.should eql 400
     end
+  end
+
+  describe '#request' do
+    let(:response) {
+      described_class.new do |params|
+        params.add_param :keyword, 'りんご'
+        params.add_param :hits, 1
+      end.request
+    }
+    it { response.should be_kind_of ::RakutenApi::ItemSearch::Response }
   end
 end

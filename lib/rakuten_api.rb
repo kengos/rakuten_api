@@ -1,8 +1,9 @@
 require "rakuten_api/version"
 require "rakuten_api/configuration"
+require "rakuten_api/error"
 require "rakuten_api/request_params"
 require "rakuten_api/item_search/model"
-require "rakuten_api/item_search/request"
+require "rakuten_api/item_search/client"
 require "rakuten_api/item_search/response"
 
 module RakutenApi

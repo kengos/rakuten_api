@@ -2,7 +2,7 @@
 
 module RakutenApi
   module ItemSearch
-    class Request
+    class Client
       APPLICATION_END_POINT = "https://app.rakuten.co.jp/"
       REQUEST_PATH = "/services/api/IchibaItem/Search/20120723"
 
@@ -20,7 +20,7 @@ module RakutenApi
       end
 
       def request
-        ::RakutenApi::ItemSearch::Response.new(get)
+        ::RakutenApi::ItemSearch::Response.new(get, @params.clone)
       end
 
       def connection
@@ -47,7 +47,7 @@ module RakutenApi
       end
 
       def init_params(application_id, affiliate_id)
-        @params = ::RakutenApi::ItemSearch::Request::Params.new(application_id, affiliate_id)
+        @params = ::RakutenApi::ItemSearch::Client::Params.new(application_id, affiliate_id)
       end
 
       class Params < ::RakutenApi::RequestParams
