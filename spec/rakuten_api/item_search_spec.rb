@@ -5,7 +5,7 @@ require 'json'
 describe RakutenApi::ItemSearch do
   describe :get do
     it do
-      client = RakutenApi::ItemSearch.new(RakutenApi.app_id)
+      client = RakutenApi::ItemSearch.new(RakutenApi.application_id)
       JSON.parse(client.get do |c|
         c.add_params('keyword', 'りんご')
       end.body).tapp

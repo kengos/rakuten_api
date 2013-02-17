@@ -16,5 +16,5 @@ RSpec.configure do |config|
 end
 
 RakutenApi.configure do |config|
-  config.app_id = "16d8dfe13fde99ac5479d789764d2f7a"
+  config.application_id = "16d8dfe13fde99ac5479d789764d2f7a"
 end
