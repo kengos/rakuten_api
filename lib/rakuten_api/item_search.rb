@@ -2,18 +2,14 @@
 
 module RakutenApi
   class ItemSearch
-    attr_accessor :app_id
-    attr_accessor :affiliate_id
 
-    def initialize(app_id, affiliate_id = nil)
-      @app_id = app_id
-      @affiliate_id = affiliate_id
-      init_params
+    def initialize(application_id = nil, affiliate_id = nil)
+      init_params(application_id, affiliate_id)
     end
 
     def get
-      yield self if block_given?
-      connection.get('/services/api/IchibaItem/Search/20120723', self.params)
+      yield @params if block_given?
+      connection.get('/services/api/IchibaItem/Search/20120723', @params.get)
     end
 
     def connection
@@ -27,18 +23,16 @@ module RakutenApi
       end
     end
 
-    def add_params(name, value)
+    def add_param(name, value)
       @params[name] = value
     end
 
     def params
-      @params.reject!{|k,v| v.nil? }
+      @params.params
     end
 
-    def init_params
-      @params = {}
-      add_params('applicationId', @app_id)
-      add_params('affiliateId', @affiliate_id)
+    def init_params(application_id, affiliate_id)
+      @params = ::RakutenApi::Request::ItemSearch.new(application_id, affiliate_id)
     end
   end
 end

@@ -7,7 +7,7 @@ describe RakutenApi::ItemSearch do
     it do
       client = RakutenApi::ItemSearch.new(RakutenApi.application_id)
       JSON.parse(client.get do |c|
-        c.add_params('keyword', 'りんご')
+        c.add_param('keyword', 'りんご')
       end.body).tapp
     end
   end

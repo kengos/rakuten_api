@@ -44,6 +44,7 @@ module RakutenApi
         @params ||= {}
         @params.reject!{|k,v| v.nil? }
       end
+      alias :get :params
 
       def valid_name?(name)
         valid_names.include? name

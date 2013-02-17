@@ -1,6 +1,7 @@
 require "rakuten_api/version"
 require "rakuten_api/configuration"
 require "rakuten_api/request/base"
+require "rakuten_api/request/item_search"
 require "rakuten_api/item_search"
 
 module RakutenApi
