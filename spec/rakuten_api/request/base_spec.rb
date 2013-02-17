@@ -28,8 +28,8 @@ describe RakutenApi::Request::Base do
       }
       it { obj[:application_id].should eql 'foo' }
       it { obj['applicationId'].should eql 'foo' }
-      it { obj.params.should be_include 'applicationId' }
-      it { obj.params.should_not be_include 'application_id' }
+      it { obj.to_hash.should be_include 'applicationId' }
+      it { obj.to_hash.should_not be_include 'application_id' }
     end
 
     context "invalid param" do
@@ -37,6 +37,7 @@ describe RakutenApi::Request::Base do
         obj.add_param(:app_id, 'foo')
       }
       it { obj[:app_id].should be_nil }
+      it { p obj }
     end
   end
 end

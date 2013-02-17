@@ -31,6 +31,10 @@ module RakutenApi
         @params
       end
 
+      def to_s
+        params
+      end
+
       def [](name)
         _name = normalize(name)
         @params[_name]
@@ -40,11 +44,11 @@ module RakutenApi
         add_param(name, value)
       end
 
-      def params
+      def to_hash
         @params ||= {}
         @params.reject!{|k,v| v.nil? }
       end
-      alias :get :params
+      alias :values :to_hash
 
       def valid_name?(name)
         valid_names.include? name

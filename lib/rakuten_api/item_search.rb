@@ -9,7 +9,7 @@ module RakutenApi
 
     def get
       yield @params if block_given?
-      connection.get('/services/api/IchibaItem/Search/20120723', @params.get)
+      connection.get('/services/api/IchibaItem/Search/20120723', @params.to_hash)
     end
 
     def connection
@@ -28,7 +28,7 @@ module RakutenApi
     end
 
     def params
-      @params.params
+      @params.to_hash
     end
 
     def init_params(application_id, affiliate_id)
