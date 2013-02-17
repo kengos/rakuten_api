@@ -8,12 +8,14 @@ Gem::Specification.new do |gem|
   gem.version       = RakutenApi::VERSION
   gem.authors       = ["kengos"]
   gem.email         = ["kengo@kengos.jp"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Rakuten Api}
+  gem.summary       = %q{Rakuten Api(http://webservice.rakuten.co.jp/)}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_development_dependency 'rspec'
 end
