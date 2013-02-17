@@ -1,8 +1,7 @@
 require "rakuten_api/version"
 require "rakuten_api/configuration"
-require "rakuten_api/request/base"
-require "rakuten_api/request/item_search"
-require "rakuten_api/item_search"
+require "rakuten_api/request_params"
+require "rakuten_api/item_search/model"
 
 module RakutenApi
   class << self
@@ -22,8 +21,5 @@ module RakutenApi
     def affiliate_id
       configuration.affiliate_id
     end
-  end
-
-  module Request
   end
 end
