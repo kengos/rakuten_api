@@ -4,9 +4,9 @@
 
 以下のAPIに対応しています。
 
-- [x] [楽天商品検索API2](http://webservice.rakuten.co.jp/api/ichibaitemsearch/) (version:2012-07-23)
-- [ ] [楽天ジャンル検索API2](https://webservice.rakuten.co.jp/api/ichibagenresearch/) (version:2012-07-23)
-- [ ] [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
+- [O] [楽天商品検索API2](http://webservice.rakuten.co.jp/api/ichibaitemsearch/) (version:2012-07-23)
+- [X] [楽天ジャンル検索API2](https://webservice.rakuten.co.jp/api/ichibagenresearch/) (version:2012-07-23)
+- [X] [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
 
 ## Supported Ruby Interpreters
 
