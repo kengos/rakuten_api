@@ -15,12 +15,20 @@ module RakutenApi
       attr_reader :page_count
       attr_reader :page
 
-      def initialize(faraday_response, params = nil)
-        raise RakutenApi::Error.new('not specified Faraday::Response') unless faraday_response.kind_of? ::Faraday::Response
+      def initialize(faraday_response = nil, params = nil)
+        raise RakutenApi::Error.new('not specified Faraday::Response') if !faraday_response.nil? && !faraday_response.kind_of?(::Faraday::Response)
         @status = faraday_response.status
         @body = json_parse(faraday_response.body)
         parse_body(@body)
         @request_params = params
+      end
+
+      def success?
+        @status == 200
+      end
+
+      def error?
+        !success?
       end
 
       def next?
@@ -33,26 +41,25 @@ module RakutenApi
 
       def get_next_page
         nil unless next?
-
-        @request_params.add_param :page, @page + 1
+        @request_params[:page] = @page + 1
         new_request
       end
 
       def get_prev_page
         nil unless prev?
-
-        @request_params.add_param :page, @page - 1
+        @request_params[:page] = @page - 1
         new_request
       end
 
       def new_request
-        client = ::RakutenApi::ItemSearch::Client.new
-        client.params = @request_params
-        client.request
+        ::RakutenApi::ItemSearch::Client.new do |params|
+          @request_params.each_pair do |k, v|
+            params.add_param k, v
+          end
+        end.request
       end
 
       def parse_body(data)
-        p data
         @count = data['count']
         @page = data['page']
         @first = data['first']
@@ -64,8 +71,11 @@ module RakutenApi
 
       def simple_mapping
         [] unless @body.include? "Items"
-        @body["Items"].each do |f|
-          p f
+        [].tap do |result|
+          @body["Items"].each do |f|
+            next unless f.include? 'Item'
+            result << RakutenApi::ItemSearch::Model.from_hash(f['Item'])
+          end
         end
       end
 

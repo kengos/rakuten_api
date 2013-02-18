@@ -3,9 +3,11 @@
 module RakutenApi
   class RequestParams
     BASE_VALID_NAMES = %w(applicationId affiliateId).freeze
+    attr_accessor :given_invalid_params
 
     def initialize(application_id = nil, affiliate_id = nil)
       init_params application_id || RakutenApi.application_id, affiliate_id || RakutenApi.affiliate_id
+      @given_invalid_params = RakutenApi.given_invalid_params
     end
 
     def init_params(application_id, affiliate_id)
@@ -19,7 +21,11 @@ module RakutenApi
       if valid_name?(_name)
         @params[_name] = value
       else
-        puts "Warning: " + name.to_s + ' is invalid name'
+        if @given_invalid_params == :raise
+          raise ::RakutenApi::Error.new('given invalid param: ' + name.to_s)
+        elsif @given_invalid_params == :stdout
+          puts "Warning: " + name.to_s + ' is invalid name'
+        end
       end
     end
 
@@ -39,6 +45,7 @@ module RakutenApi
     def to_hash
       @params ||= {}
       @params.reject!{|k,v| v.nil? }
+      @params
     end
 
     def valid_name?(name)

@@ -4,15 +4,20 @@ require 'spec_helper'
 require 'json'
 
 describe RakutenApi::ItemSearch::Client do
+  let(:client) {
+    RakutenApi::ItemSearch::Client.new do |params|
+      params.add_param :keyword, 'りんご'
+      params.add_param :hits, 2
+    end
+  }
   describe '#get' do
     let(:response) {
-      described_class.new do |params|
-        params.add_param :keyword, 'りんご'
-        params.add_param :hits, 1
-      end.get
+      VCR.use_cassette('item_search_response') do
+        client.get
+      end
     }
     it { response.should be_kind_of ::Faraday::Response }
-    it { JSON.parse(response.body)['hits'].should eql 1 }
+    it { JSON.parse(response.body)['hits'].should eql 2 }
 
     it "bad request" do
       described_class.new.get.status.should eql 400
@@ -21,10 +26,9 @@ describe RakutenApi::ItemSearch::Client do
 
   describe '#request' do
     let(:response) {
-      described_class.new do |params|
-        params.add_param :keyword, 'りんご'
-        params.add_param :hits, 1
-      end.request
+      VCR.use_cassette('item_search_response') do
+        client.request
+      end
     }
     it { response.should be_kind_of ::RakutenApi::ItemSearch::Response }
   end

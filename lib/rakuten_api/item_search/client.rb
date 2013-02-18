@@ -15,12 +15,12 @@ module RakutenApi
         if block_given?
           yield connection.get(REQUEST_PATH, params)
         else
-          connection.get(REQUEST_PATH, @params.to_hash)
+          connection.get(REQUEST_PATH, params)
         end
       end
 
       def request
-        ::RakutenApi::ItemSearch::Response.new(get, @params.clone)
+        ::RakutenApi::ItemSearch::Response.new(get, params.clone)
       end
 
       def connection
@@ -34,16 +34,12 @@ module RakutenApi
         end
       end
 
-      def add_param(name, value)
-        @params[name] = value
-      end
-
-      def params=(params)
-        @params = params
-      end
-
       def params
         @params.to_hash
+      end
+
+      def add_param(name, value)
+        @params[name] = value
       end
 
       def init_params(application_id, affiliate_id)

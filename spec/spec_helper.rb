@@ -6,6 +6,16 @@ rescue Exception
 end
 
 require 'faraday'
+require 'webmock/rspec'
+WebMock.disable_net_connect!
+require 'vcr'
+
+VCR.configure do |c|  
+  c.cassette_library_dir = File.expand_path(File.dirname(__FILE__) + '/fixtures/vcr_cassettes')
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = true
+end
+
 require File.expand_path(File.dirname(__FILE__) + '/../lib/rakuten_api')
 
 RSpec.configure do |config|
@@ -17,4 +27,8 @@ end
 
 RakutenApi.configure do |config|
   config.application_id = "16d8dfe13fde99ac5479d789764d2f7a"
+end
+
+def json_fixture_path(filename)
+  File.expand_path(File.dirname(__FILE__) + '/fixtures/json/' + filename)
 end

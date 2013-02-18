@@ -44,7 +44,7 @@ module RakutenApi
       attr_accessor :item_code
       attr_accessor :item_price
       attr_accessor :item_caption
-      attr_accessor :url
+      attr_accessor :item_url
       attr_accessor :affiliate_url
       attr_accessor :small_image_urls
       attr_accessor :medium_image_urls

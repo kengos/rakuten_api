@@ -24,5 +24,9 @@ module RakutenApi
     def affiliate_id
       configuration.affiliate_id
     end
+
+    def given_invalid_params
+      configuration.given_invalid_params || :none
+    end
   end
 end
