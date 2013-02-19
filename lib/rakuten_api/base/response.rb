@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module RakutenApi
+module RakutenApi::Base
   class Response
     attr_reader :status
     attr_reader :body

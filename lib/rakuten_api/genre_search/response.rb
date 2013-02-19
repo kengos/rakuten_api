@@ -2,7 +2,7 @@
 
 module RakutenApi
   module GenreSearch
-    class Response < ::RakutenApi::Response
+    class Response < ::RakutenApi::Base::Response
       def initialize(faraday_response = nil)
         super(faraday_response)
       end

@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module RakutenApi
+module RakutenApi::Base
   class Client
     def initialize(application_id = nil, affiliate_id = nil)
       init_params(application_id, affiliate_id)
@@ -8,15 +8,15 @@ module RakutenApi
     end
 
     def init_params(application_id, affiliate_id)
-      raise "not implemented"
+      raise "not implement"
     end
 
     def get
-      raise "not implemented"
+      raise "not implement"
     end
 
     def request
-      raise "not implemented"
+      raise "not implement"
     end
 
     def connection

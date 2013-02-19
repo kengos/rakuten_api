@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe RakutenApi::RequestParams do
+describe RakutenApi::Base::Params do
   describe '#normalize' do
     shared_examples "should normalize" do |value, expect|
       it { described_class.new.normalize(value).should eql expect }

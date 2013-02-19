@@ -1,7 +1,7 @@
 # coding: utf-8
 
-module RakutenApi
-  class RequestParams
+module RakutenApi::Base
+  class Params
     BASE_VALID_NAMES = %w(applicationId affiliateId).freeze
     attr_accessor :invalid_params_action
 

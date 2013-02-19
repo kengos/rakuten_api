@@ -2,7 +2,7 @@
 
 module RakutenApi
   module ItemSearch
-    class Client < ::RakutenApi::Client
+    class Client < ::RakutenApi::Base::Client
       REQUEST_PATH = "/services/api/IchibaItem/Search/20120723"
 
       def get
@@ -17,7 +17,7 @@ module RakutenApi
         @params = ::RakutenApi::ItemSearch::Client::Params.new(application_id, affiliate_id)
       end
 
-      class Params < ::RakutenApi::RequestParams
+      class Params < ::RakutenApi::Base::Params
         VALID_NAMES = %w(keyword shopCode genreId hits page sort minPrice maxPrice availability field
           carrier imageFlag orFlag NGKeyword purchaseType shipOverseasFlag shipOverseasArea
           asurakuFlag asurakuArea pointRateFlag pointRate postageFlag creditCardFlag itemCode

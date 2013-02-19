@@ -2,7 +2,7 @@
 
 module RakutenApi
   module GenreSearch
-    class Client < RakutenApi::Client
+    class Client < RakutenApi::Base::Client
       REQUEST_PATH = "/services/api/IchibaGenre/Search/20120723"
 
       def get
@@ -17,7 +17,7 @@ module RakutenApi
         @params = ::RakutenApi::GenreSearch::Client::Params.new(application_id, affiliate_id)
       end
 
-      class Params < ::RakutenApi::RequestParams
+      class Params < ::RakutenApi::Base::Params
         VALID_NAMES = %w(genreId genrePath).freeze
 
         def valid_names

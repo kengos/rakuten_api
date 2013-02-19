@@ -4,7 +4,7 @@ require 'json'
 
 module RakutenApi
   module ItemSearch
-    class Response < ::RakutenApi::Response
+    class Response < ::RakutenApi::Base::Response
       attr_reader :hits
       attr_reader :count
       attr_reader :first
