@@ -78,7 +78,7 @@ p response.simple_mapping
 
 以下は全て同じパラメータを指定していることになる。
 
-```
+```ruby
 params.add_param :genre_id, 0
 params.add_param :genreId, 0
 params.add_param 'genre_id', 0
@@ -111,8 +111,7 @@ p response.children
 
 * genre_id: 551172での(genreLevel: 2)検索
 
-```
-
+```ruby
 client = RakutenApi::GenreSearch::Client.new do |params|
   params.add_param :genre_id, 551172
 end
