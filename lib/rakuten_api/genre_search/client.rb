@@ -10,11 +10,7 @@ module RakutenApi
       end
 
       def request
-        ::RakutenApi::GenreSearch::Response.new(get, params.clone)
-      end
-
-      def connection
-        @connection ||= new_connection
+        ::RakutenApi::GenreSearch::Response.new(get)
       end
 
       def init_params(application_id, affiliate_id)

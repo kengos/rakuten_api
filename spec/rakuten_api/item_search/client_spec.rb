@@ -5,7 +5,7 @@ require 'json'
 
 describe RakutenApi::ItemSearch::Client do
   let(:client) {
-    RakutenApi::ItemSearch::Client.new do |params|
+    described_class.new do |params|
       params.add_param :keyword, 'りんご'
       params.add_param :hits, 2
     end

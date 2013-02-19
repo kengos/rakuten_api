@@ -34,7 +34,7 @@ describe RakutenApi::RequestParams do
 
     context "invalid param" do
       before {
-        obj.given_invalid_params = :raise
+        obj.invalid_params_action = :raise
       }
       it { lambda { obj.add_param(:app_id, 'foo') }.should raise_error(RakutenApi::Error) }
     end

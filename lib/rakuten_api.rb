@@ -1,12 +1,12 @@
 require "rakuten_api/version"
+require "rakuten_api/dummy_module"
 require "rakuten_api/configuration"
 require "rakuten_api/error"
 require "rakuten_api/request_params"
 require "rakuten_api/client"
-require "rakuten_api/item_search/model"
+require "rakuten_api/response"
 require "rakuten_api/item_search/client"
 require "rakuten_api/item_search/response"
-require "rakuten_api/genre_search/model"
 require "rakuten_api/genre_search/client"
 require "rakuten_api/genre_search/response"
 
@@ -22,16 +22,19 @@ module RakutenApi
     end
     alias :config :configuration
 
-    def application_id
-      configuration.application_id
-    end
+    def constantize(name)
+      names = config.send(name).split('::')
+      names.shift if names.empty? || names.first.empty?
 
-    def affiliate_id
-      configuration.affiliate_id
-    end
-
-    def given_invalid_params
-      configuration.given_invalid_params || :none
+      constant = Object
+      names.each do |name|
+        constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+      end
+      constant
     end
   end
 end
+
+require "rakuten_api/genre_search/model"
+require "rakuten_api/item_search/model"
+

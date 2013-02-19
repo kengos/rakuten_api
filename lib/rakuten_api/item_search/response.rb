@@ -4,9 +4,7 @@ require 'json'
 
 module RakutenApi
   module ItemSearch
-    class Response
-      attr_reader :status
-      attr_reader :body
+    class Response < ::RakutenApi::Response
       attr_reader :hits
       attr_reader :count
       attr_reader :first
@@ -16,19 +14,9 @@ module RakutenApi
       attr_reader :page
 
       def initialize(faraday_response = nil, params = nil)
-        raise RakutenApi::Error.new('not specified Faraday::Response') if !faraday_response.nil? && !faraday_response.kind_of?(::Faraday::Response)
-        @status = faraday_response.status
-        @body = json_parse(faraday_response.body)
+        super(faraday_response)
         parse_body(@body)
         @request_params = params
-      end
-
-      def success?
-        @status == 200
-      end
-
-      def error?
-        !success?
       end
 
       def next?
@@ -78,14 +66,6 @@ module RakutenApi
           end
         end
       end
-
-      protected
-        def json_parse(data)
-          JSON.parse(data)
-        rescue JSON::ParserError
-          # @todo logger
-          {}
-        end
     end
   end
 end

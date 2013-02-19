@@ -3,6 +3,8 @@
 module RakutenApi
   module ItemSearch
     class Model
+      include RakutenApi.constantize 'item_model'
+
       MAPPINGS = {
         "itemName" => 'item_name',
         'catchcopy' => 'catchcopy',
