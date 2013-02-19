@@ -5,9 +5,16 @@ module RakutenApi::Base
     BASE_VALID_NAMES = %w(applicationId affiliateId).freeze
     attr_accessor :invalid_params_action
 
-    def initialize(application_id = nil, affiliate_id = nil)
+    # Initialize
+    # @param [String] application_id Rakuten Web Service applicationId
+    #    If application_id is nil, application_id set to RakutenApi.config.application_id
+    # @param [String] affiliate_id Rakuten Web Service affiliateId
+    #    If affiliate_id is nil, affiliate_id set to RakutenApi.config.affiliate_id
+    # @param [Symbol] invalid_params_action :raise or :stdout or :none
+    #    If invalid_params_action is nil, invalid_params_action set to RakutenApi.config.invalid_params_action
+    def initialize(application_id = nil, affiliate_id = nil, invalid_params_action = nil)
       init_params application_id || RakutenApi.config.application_id, affiliate_id || RakutenApi.config.affiliate_id
-      @invalid_params_action = RakutenApi.config.invalid_params_action
+      @invalid_params_action = invalid_params_action || RakutenApi.config.invalid_params_action
     end
 
     def init_params(application_id, affiliate_id)

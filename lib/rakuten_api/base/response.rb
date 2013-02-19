@@ -19,6 +19,14 @@ module RakutenApi::Base
       !success?
     end
 
+    def error_message
+      nil if success?
+      message = ''
+      message += @body['error'] + ': ' if @body.include? 'error'
+      message += @body['error_description'] if @body.include? 'error_description'
+      message == '' ? 'no error message' : message;
+    end
+
     protected
 
     def json_parse(data)

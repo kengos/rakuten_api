@@ -13,6 +13,18 @@ module RakutenApi
         ::RakutenApi::GenreSearch::Response.new(get)
       end
 
+      # get rakuten root genres
+      # @param [String] application_id
+      # @param [String] affiliate_id
+      # @return [Array<RakutenApi::GenreSearch::Model>] 
+      def self.root_categories(application_id = nil, affiliate_id = nil)
+        response = self.new(application_id, affiliate_id) do |params|
+          params.add_param :genre_id, 0
+        end.request
+        raise RakutenApi::ServerError.new($response.error_message, $response.status) if response.error?
+        response.children
+      end
+
       def init_params(application_id, affiliate_id)
         @params = ::RakutenApi::GenreSearch::Client::Params.new(application_id, affiliate_id)
       end

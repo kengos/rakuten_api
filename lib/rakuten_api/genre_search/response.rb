@@ -11,7 +11,15 @@ module RakutenApi
         @cache ||= {}
       end
 
-      def parent
+      def parents
+        return cache['parents'] if cache.include? 'parents'
+        [] unless @body.include? 'parents'
+        cache['parents'] = [].tap do |result|
+          @body['parents'].each do |f|
+            next unless f.include? 'parent'
+            result << RakutenApi::GenreSearch::Model.from_hash(f['parent'])
+          end
+        end
       end
 
       def current

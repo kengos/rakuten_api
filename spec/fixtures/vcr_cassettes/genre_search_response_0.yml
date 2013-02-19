@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://app.rakuten.co.jp/services/api/IchibaGenre/Search/20120723?applicationId=16d8dfe13fde99ac5479d789764d2f7a&genreId=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VHVlLCAxOSBGZWIgMjAxMyAxMzoxNjoyMiBHTVQ=
+      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2lu":
+      - !binary |-
+        Kg==
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tc3RvcmU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjtjaGFyc2V0PVVURi04
+      !binary "Q29udGVudC1MYW5ndWFnZQ==":
+      - !binary |-
+        amEtSlA=
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        OTIw
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA51WyU4bQRT8lzlzmJ7FHnMNF6QopwgpijigYCWRCIrIckFI
+        TDcGL4BN2GSIQ1hMzL4YAnjAfEx7tr/I654B5DaHdnywesZy9et6VdVvXPk8
+        NJYe/fpF6X072KO8+zbGnpTeceV9enQs3T+s9Ko90frV0Ke00qso8ePL9Pf0
+        CPw6Af/68HFkGP4HGOPRQxuAhlDS0NpRXg9Q4lC8T8ktJTMUb/M1vDmgZJOS
+        PWEXNDHR8xw0UlU9idqhKTmMIQEb31CyTDFAEoqvKPlDSb0LbJRox/ZOL3iV
+        dwyVZCnJUQJ11yk+kUdVVbMdNcifcdTDmA3AI05f/xtJSBOpKVUgwVutej8P
+        w8wPQPKnbsPMvCSYpqooobeDta7n3MKyvwSMOq27IrWb1J6SPi/SkC52aI31
+        g/HnPK3xKW9SQ/bUppXSUgKRmWWvjINatgvmkCkWt8jbAEJ0vIsCUCjLHEog
+        vUOLJX4oOJrjnhb93B4/8goonHc5F64vBOc1ee1oWrJ9h3B7w1205ZuBkCFw
+        5uR5TSWKd+RlbJoIJYRSmNkAg5E3xSDtfFBcdI9KXSjFEMLmRR9zwgD79qp3
+        blmWKVZeUiyPBQs4tfHficAPLUjOnXWClUNoAXdwne9wDzxG6m45heDoSr69
+        KV2A95vz7vFNjM3CDOp2wt0yBJE8rYZuCUUf7VK7zlEveb8WObbTuq+EZVkD
+        QrmmLjobH0Um5pIqP3gJ1r8YLaRAyTQkcxeOEi1O8TUlVYprPHg5Nt5ifOPo
+        MOylbDsh31Nqhxv8pVrczgdPRG9kURNaQhek5x7/DdedbmRgidqd5KXUHnPT
+        tatuQ1ZZLCsN49lWEThp/fHILE3KsIkT7N/7pWlYuxl5+YI7xE3sPMWY2psU
+        E87o+pMk8Dlf/JaHV5NqZ+KQylPiMCXsxvcy3pLn21I7yNnh+TzNBAWowPdJ
+        Bahgi+K8fzEnrWAzaQkegas54jvKfhZtKzNe9j6C93KFIH/dzWUtTFZw7bNG
+        Avb+7EMmbXBTyo8oSLc65olMsMnw3JmGe3vJe2lTfBbpURLYUDXL7JgFZpil
+        WTgcxPnJWIdv+QlDNTpzKOpfPtJa67rgVyZ50Xn+U5bpBNwkLRJwkGUJk0JY
+        kc9g9hGSvdyE7ruNVTahXRXdUjacXAvO+YCAj6P5sgt4LSHyusDG1JhRx12o
+        Bc2Gt7fx7B06OPEP3pPhCAgMAAA=
+    http_version: 
+  recorded_at: Tue, 19 Feb 2013 13:16:22 GMT
+recorded_with: VCR 2.4.0
