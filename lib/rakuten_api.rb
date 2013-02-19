@@ -1,6 +1,7 @@
 require "rakuten_api/version"
 require "rakuten_api/dummy_module"
 require "rakuten_api/configuration"
+require "rakuten_api/base/model"
 require "rakuten_api/error"
 require "rakuten_api/request_params"
 require "rakuten_api/client"

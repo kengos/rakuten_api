@@ -2,7 +2,7 @@
 
 module RakutenApi
   module ItemSearch
-    class Model
+    class Model < ::RakutenApi::Base::Model
       include RakutenApi.constantize 'item_model'
 
       MAPPINGS = {
@@ -77,25 +77,8 @@ module RakutenApi
       attr_accessor :shop_url
       attr_accessor :genre_id
 
-      def to_hash
-        {}.tap do |h|
-          instance_variables.each do |sym|
-            h[sym.to_s.tapp.sub('@', '').to_sym] = instance_variable_get(sym)
-          end
-        end
-      end
-
-      def self.from_hash(hash)
-        obj = self.new
-        MAPPINGS.each_pair do |k, v|
-          next unless hash.include?(k)
-          if v.is_a?(Array) && v[1].respond_to?(:call)
-            obj.send("#{v[0]}=", v[1].call(hash[k]))
-          else
-            obj.send("#{v}=", hash[k])
-          end
-        end
-        obj
+      def self.mapping
+        MAPPINGS
       end
     end
 
