@@ -43,49 +43,47 @@ end
 
 ### 商品検索API 2
 
-### 初期化
-
-initilizerにブロックを渡せるようにしてあります。
+* keyword: 'りんご', hits: '2'(2商品だけ表示)での検索
 
 ```ruby
-client = RakutenApi::ItemSearch::Client.new do |params|
+client = RakutenApi::GenreSearch::Client.new do |params|
   params.add_param :keyword, 'りんご'
-  params.add_param :page, 2
+  params.add_param :hits, 2
 end
+
+response = client.request
+
+p response.status # => 200
+p response.body # => APIのレスポンスBodyをJSONデコードした値が入っている
+p response.page_count # => 100 (取得可能なページ数)(この場合は100まで指定可能を意味する)
+p response.page # => 1 (現在のページ番号)
+p response.carrier # => 0 (キャリア) (0: PC, 1: 携帯, 2: スマートフォン)
+p response.first # => 1 (現在の表示商品始)(1つめを意味する)
+p response.last # => 2 (現在の表示商品終)(2つめを意味する)
+p response.simple_mapping
+# => [
+# #<RakutenApi::ItemSearch::Model:0x007fcb6cd6a350 @item_name="グルメ大賞2010 青森県産 りんご サンふじ...略", @catchcopy="【送料無料】りんご 青森産 サンふじ...略" @item_url="http://item.rakuten.co.jp/cameashi/10000323/", @affiliate_url="", @small_image_urls=["http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/2012fuji-f5kgb.jpg?_ex=64x64", "http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/img58491689.jpg?_ex=64x64", "http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/img55339932.gif?_ex=64x64"], @medium_image_urls=["http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/2012fuji-f5kgb.jpg?_ex=128x128", "http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/img58491689.jpg?_ex=128x128", "http://thumbnail.image.rakuten.co.jp/@0_mall/cameashi/cabinet/00473472/img55339932.gif?_ex=128x128"], @image_flag=true, @availability=true, @tax_flag=false, @postage_flag=false, @creadit_card_flag=true, @shop_of_the_year_flag=false, @ship_overseas_flag=false, @asuraku_flag=false, @gift_flag=false, @ship_overseas_area="", @asuraku_closing_time="", @asuraku_area="", @affiliate_rate=1, @start_time="", @end_time="", @review_count=2371, @review_average=4.4, @point_rate=1, @point_rate_start_time="", @point_rate_end_time="", @shop_name="かめあし商店", @shop_code="cameashi", @shop_url="http://www.rakuten.co.jp/cameashi/", @genre_id="304637">
+# ...
+# ]
 ```
-
-また、`add_param`で渡すフィールドをRubyっぽい感じでも渡せるようになっています。
-
-例) `genreId`を渡したい場合は`:genre_id`でもOK
-
-
-### APIリクエスト
-
-リクエストの方法は `get`と`request`の2種類があります。
-
-* `get`
-
-レスポンスを`Faraday::Response`として返します。
-
-* `request`
-
-レスポンスをある程度操作しやすいように、`RakutenApi::ItemSearch::Response`形式に変換して返します。
-
-
-### RakutenApi::ItemSearch::Response
-
-* ページ遷移機能
-
-ページ遷移がしやすいように、`get_next_page`, `get_prev_page`を用意してあります。
-
-それぞれの結果は、 `RakutenApi::ItemSearch::Response`として返ります。
-
-* 単純なObjectマッピング
 
 `simple_mapping`を呼び出すと、
 
 [RakutenApi::ItemSearch::Model](https://github.com/kengos/rakuten_api/blob/master/lib/rakuten_api/item_search/model.rb) の配列で返却されます。
 
+
+### add_param について
+
+楽天WebService上で表記されている`genreId`を指定する場合
+
+以下は全て同じパラメータを指定していることになる。
+
+```
+params.add_param :genre_id, 0
+params.add_param :genreId, 0
+params.add_param 'genre_id', 0
+params.add_param 'genreId', 0
+```
 
 ### ジャンル検索API 2
 
