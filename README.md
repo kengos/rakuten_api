@@ -4,9 +4,9 @@
 
 以下のAPIに対応しています。
 
-- [O] [楽天商品検索API2](http://webservice.rakuten.co.jp/api/ichibaitemsearch/) (version:2012-07-23)
-- [X] [楽天ジャンル検索API2](https://webservice.rakuten.co.jp/api/ichibagenresearch/) (version:2012-07-23)
-- [X] [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
+- [楽天商品検索API2](http://webservice.rakuten.co.jp/api/ichibaitemsearch/) (version:2012-07-23)
+- [楽天ジャンル検索API2](https://webservice.rakuten.co.jp/api/ichibagenresearch/) (version:2012-07-23)
+- [未実装] [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
 
 ## Supported Ruby Interpreters
 
@@ -86,6 +86,54 @@ end
 
 [RakutenApi::ItemSearch::Model](https://github.com/kengos/rakuten_api/blob/master/lib/rakuten_api/item_search/model.rb) の配列で返却されます。
 
+
+### ジャンル検索API 2
+
+* genre_id: 0での検索
+
+```ruby
+client = RakutenApi::GenreSearch::Client.new do |params|
+  params.add_param :genre_id, 0
+end
+
+response = client.request
+p response.current
+# => #<RakutenApi::GenreSearch::Model:0x007f956aba3fb8 @genre_id=0, @genre_name="", @genre_level=0>
+
+p response.parents
+# => []
+
+p response.children
+# => [
+#  #<RakutenApi::GenreSearch::Model:0x007f956aba1ec0 @genre_id=211742, @genre_name="TV・オーディオ・カメラ", @genre_level=1>,
+#  #<RakutenApi::GenreSearch::Model:0x007f956abcb360 @genre_id=100371, @genre_name="レディースファッション", @genre_level=1>,
+#  ...
+# ]
+```
+
+* genre_id: 551172での(genreLevel: 2)検索
+
+```
+
+client = RakutenApi::GenreSearch::Client.new do |params|
+  params.add_param :genre_id, 551172
+end
+
+response = client.request
+p response.current
+# => <RakutenApi::GenreSearch::Model:0x007fe1a39a28b0 @genre_id=551172, @genre_name="医療計測器", @genre_level=2>
+
+p response.parents
+# => [#<RakutenApi::GenreSearch::Model:0x007fe1a39a2540 @genre_id=551169, @genre_name="医薬品・コンタクト・介護", @genre_level=1>]
+
+p response.children
+# => [
+#  #<RakutenApi::GenreSearch::Model:0x007fe1a39a21a8 @genre_id=208232, @genre_name="塩素計", @genre_level=3>,
+#  #<RakutenApi::GenreSearch::Model:0x007fe1a39a1fc8 @genre_id=551173, @genre_name="その他", @genre_level=3>,
+#  ...
+# ]
+#
+```
 
 ## Dependencies
 
