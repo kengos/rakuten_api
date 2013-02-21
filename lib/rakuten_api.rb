@@ -11,6 +11,7 @@ require "rakuten_api/item_search/client"
 require "rakuten_api/item_search/response"
 require "rakuten_api/genre_search/client"
 require "rakuten_api/genre_search/response"
+require "rakuten_api/item_ranking/client"
 
 module RakutenApi
   APPLICATION_END_POINT = "https://app.rakuten.co.jp/"
