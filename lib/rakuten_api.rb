@@ -5,6 +5,7 @@ require "rakuten_api/base/model"
 require "rakuten_api/base/client"
 require "rakuten_api/base/params"
 require "rakuten_api/base/response"
+require "rakuten_api/base/item"
 
 require "rakuten_api/error"
 require "rakuten_api/item_search/client"
@@ -40,4 +41,4 @@ end
 
 require "rakuten_api/genre_search/model"
 require "rakuten_api/item_search/model"
-
+require "rakuten_api/item_ranking/model"

@@ -13,19 +13,28 @@ module RakutenApi::Base
     class << self
       def from_hash(hash)
         obj = self.new
-        mapping.each_pair do |k, v|
-          next unless hash.include?(k)
-          if v.is_a?(Array) && v[1].respond_to?(:call)
-            obj.send("#{v[0]}=", v[1].call(hash[k]))
-          else
-            obj.send("#{v}=", hash[k])
-          end
+        hash.each_pair do |k, v|
+          v = casting[k].call(v) if casting.include?(k)
+          attribute = mapping.include?(k) ? mapping[k] : downcase(k)
+          obj.send("#{attribute}=", v) if obj.respond_to?("#{attribute}=")
         end
         obj
       end
 
+      def downcase(word)
+        _word = word.dup
+        _word.gsub!(/([A-Z\d]+)([A-Z][a-z])/,'\1_\2')
+        _word.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+        _word.downcase!
+        _word
+      end
+
       def mapping
-        raise "not implement"
+        {}
+      end
+
+      def casting
+        {}
       end
     end
   end

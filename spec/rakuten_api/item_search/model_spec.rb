@@ -23,7 +23,7 @@ describe RakutenApi::ItemSearch::Model do
       its(:availability) { should be_true }
       its(:tax_flag) { should be_false }
       its(:postage_flag) { should be_true }
-      its(:creadit_card_flag) { should be_true }
+      its(:credit_card_flag) { should be_true }
       its(:shop_of_the_year_flag) { should be_false }
       its(:ship_overseas_flag) { should be_false }
       its(:asuraku_flag) { should be_false }

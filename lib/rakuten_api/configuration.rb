@@ -12,13 +12,16 @@ module RakutenApi
     attr_accessor :genre_model
     # RakutenApi::ItemSearch::Model include Module
     attr_accessor :item_model
+    # RakutenApi::ItemRanking::Model include Module
+    attr_accessor :item_ranking_module
 
     def initialize
       @application_id = nil
       @affiliate_id = nil
       @invalid_params_action = :stdout
-      @genre_model = '::RakutenApi::DummyModule'
-      @item_model = '::RakutenApi::DummyModule'
+      @genre_model = 'RakutenApi::DummyModule'
+      @item_model = 'RakutenApi::DummyModule'
+      @item_ranking_module = 'RakutenApi::DummyModule'
     end
   end
 end
