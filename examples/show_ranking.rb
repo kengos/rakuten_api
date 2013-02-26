@@ -8,7 +8,7 @@ require 'rakuten_api'
 require 'faraday'
 
 RakutenApi.configure do |config|
-  config.application_id = "[Your application_id]"
+  config.application_id = "[Your Application Id]"
 end
 
 client = RakutenApi::ItemRanking::Client.new
