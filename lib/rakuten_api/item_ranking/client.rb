@@ -9,6 +9,10 @@ module RakutenApi
         connection.get(REQUEST_PATH, params)
       end
 
+      def request
+        Response.new(get, params.clone)
+      end
+
       def init_params(application_id, affiliate_id)
         @params = Params.new(application_id, affiliate_id)
       end
