@@ -2,6 +2,7 @@
 
 module RakutenApi::Base
   class Response
+    require 'json'
     attr_reader :status
     attr_reader :body
 
@@ -30,8 +31,8 @@ module RakutenApi::Base
     protected
 
     def json_parse(data)
-      JSON.parse(data)
-    rescue JSON::ParserError
+      ::JSON.parse(data)
+    rescue ::JSON::ParserError
       # @todo logger
       {}
     end
