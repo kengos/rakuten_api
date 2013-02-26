@@ -6,7 +6,7 @@
 
 - [楽天商品検索API2](http://webservice.rakuten.co.jp/api/ichibaitemsearch/) (version:2012-07-23)
 - [楽天ジャンル検索API2](https://webservice.rakuten.co.jp/api/ichibagenresearch/) (version:2012-07-23)
-- [未実装] [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
+- [楽天商品ランキングAPI2](https://webservice.rakuten.co.jp/api/ichibaitemranking/) (version:2012-09-27)
 
 ## Supported Ruby Interpreters
 
@@ -131,6 +131,29 @@ p response.children
 # ]
 #
 ```
+
+### 楽天商品ランキングAPI2
+
+* 総合ランキング
+
+```ruby
+response = RakutenApi::ItemRanking::Client.new.request
+p response.title # => '【楽天市場】ランキング市場 【総合】'
+p response.last_build_date.class # => DateTime
+p response.page # => 1
+p response.simple_mapping
+# => [
+#  #<RakutenApi::ItemRanking::Model:0x007fa7c2138230 @rank=1, @carrier=0, @item_name="...>,
+#  #<RakutenApi::ItemRanking::Model:...>,
+#  ...
+# ]
+```
+
+次のページを取得するには `next_ranking`を実行する。
+
+使い方の詳細はexamplesを確認のこと。
+
+[ranking_csv.rb](https://github.com/kengos/rakuten_api/blob/master/examples/ranking_csv.rb)
 
 ## Dependencies
 
