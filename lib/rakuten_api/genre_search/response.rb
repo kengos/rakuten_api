@@ -17,15 +17,15 @@ module RakutenApi
         cache['parents'] = [].tap do |result|
           @body['parents'].each do |f|
             next unless f.include? 'parent'
-            result << RakutenApi::GenreSearch::Model.from_hash(f['parent'])
+            result << Model.from_hash(f['parent'])
           end
         end
       end
 
       def current
         return cache['current'] if cache.include? 'current'
-        Rakuten::GenreSearch::Model.new unless @body.include? "current"
-        cache['current'] = RakutenApi::GenreSearch::Model.from_hash(@body['current'])
+        return Model.new unless @body.include? "current"
+        cache['current'] = Model.from_hash(@body['current'])
       end
 
       def children
@@ -34,7 +34,7 @@ module RakutenApi
         cache['children'] = [].tap do |result|
           @body["children"].each do |f|
             next unless f.include? 'child'
-            result << RakutenApi::GenreSearch::Model.from_hash(f['child'])
+            result << Model.from_hash(f['child'])
           end
         end
       end

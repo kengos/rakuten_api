@@ -40,7 +40,7 @@ module RakutenApi
       end
 
       def new_request
-        ::RakutenApi::ItemSearch::Client.new do |params|
+        Client.new do |params|
           @request_params.each_pair do |k, v|
             params.add_param k, v
           end
@@ -62,7 +62,7 @@ module RakutenApi
         [].tap do |result|
           @body["Items"].each do |f|
             next unless f.include? 'Item'
-            result << RakutenApi::ItemSearch::Model.from_hash(f['Item'])
+            result << Model.from_hash(f['Item'])
           end
         end
       end

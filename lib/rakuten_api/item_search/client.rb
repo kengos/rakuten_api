@@ -10,11 +10,11 @@ module RakutenApi
       end
 
       def request
-        ::RakutenApi::ItemSearch::Response.new(get, params.clone)
+        Response.new(get, params.clone)
       end
 
       def init_params(application_id, affiliate_id)
-        @params = ::RakutenApi::ItemSearch::Client::Params.new(application_id, affiliate_id)
+        @params = Params.new(application_id, affiliate_id)
       end
 
       class Params < ::RakutenApi::Base::Params
