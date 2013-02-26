@@ -4,7 +4,11 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'rake',           '~> 0.9.2.2', :require => false
   gem 'tapp', git: 'git://github.com/esminc/tapp.git'
+end
+
+group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'libnotify', require: false
