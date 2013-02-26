@@ -6,14 +6,7 @@ require "rakuten_api/base/client"
 require "rakuten_api/base/params"
 require "rakuten_api/base/response"
 require "rakuten_api/base/item"
-
 require "rakuten_api/error"
-require "rakuten_api/item_search/client"
-require "rakuten_api/item_search/response"
-require "rakuten_api/genre_search/client"
-require "rakuten_api/genre_search/response"
-require "rakuten_api/item_ranking/client"
-require "rakuten_api/item_ranking/response"
 
 module RakutenApi
   APPLICATION_END_POINT = "https://app.rakuten.co.jp/"
@@ -38,8 +31,22 @@ module RakutenApi
       constant
     end
   end
-end
 
-require "rakuten_api/genre_search/model"
-require "rakuten_api/item_search/model"
-require "rakuten_api/item_ranking/model"
+  module ItemSearch
+    autoload :Client, 'rakuten_api/item_search/client'
+    autoload :Response, 'rakuten_api/item_search/response'
+    autoload :Model, 'rakuten_api/item_search/model'
+  end
+
+  module ItemRanking
+    autoload :Client, 'rakuten_api/item_ranking/client'
+    autoload :Response, 'rakuten_api/item_ranking/response'
+    autoload :Model, 'rakuten_api/item_ranking/model'
+  end
+
+  module GenreSearch
+    autoload :Client, 'rakuten_api/genre_search/client'
+    autoload :Response, 'rakuten_api/genre_search/response'
+    autoload :Model, 'rakuten_api/genre_search/model'
+  end
+end
