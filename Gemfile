@@ -6,6 +6,7 @@ gemspec
 group :development, :test do
   gem 'rake',           '~> 0.9.2.2', :require => false
   gem 'tapp', git: 'git://github.com/esminc/tapp.git'
+  gem 'rspec'
 end
 
 group :development do
