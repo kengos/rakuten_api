@@ -7,7 +7,7 @@ module RakutenApi
       attr_reader :last_build_date
       attr_reader :page
 
-      def initialize(faraday_response = nil, params = nil)
+      def initialize(faraday_response = nil, params = {})
         super(faraday_response)
         @request_params = params
         parse_body
@@ -44,10 +44,10 @@ module RakutenApi
       end
 
       def simple_mapping
-        [] unless @body.include? "Items"
+        return [] unless @body.key? "Items"
         [].tap do |result|
           @body["Items"].each do |f|
-            next unless f.include? 'Item'
+            next unless f.key? 'Item'
             result << Model.from_hash(f['Item'])
           end
         end

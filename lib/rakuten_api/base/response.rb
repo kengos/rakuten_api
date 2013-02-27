@@ -8,8 +8,8 @@ module RakutenApi::Base
 
     def initialize(faraday_response = nil)
       raise RakutenApi::Error.new('not specified Faraday::Response') if !faraday_response.nil? && !faraday_response.kind_of?(::Faraday::Response)
-      @status = faraday_response.status
-      @body = json_parse(faraday_response.body)
+      @status = faraday_response.nil? ? nil : faraday_response.status
+      @body = json_parse(faraday_response.nil? ? '' : faraday_response.body)
     end
 
     def success?
@@ -32,8 +32,7 @@ module RakutenApi::Base
 
     def json_parse(data)
       ::JSON.parse(data)
-    rescue ::JSON::ParserError
-      # @todo logger
+    rescue ::JSON::ParserError => e
       {}
     end
   end

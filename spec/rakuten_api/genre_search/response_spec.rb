@@ -22,6 +22,8 @@ describe RakutenApi::GenreSearch::Response do
     its(:body) { should be }
     its(:children) { should be_kind_of Array }
     its('children.first') { should be_kind_of RakutenApi::GenreSearch::Model }
+    its('current.genre_id') { should == 0 }
+    its(:parents) { should == [] }
   end
 
   context 'level 1 category' do
@@ -43,5 +45,13 @@ describe RakutenApi::GenreSearch::Response do
         its(:genre_level) { should eql 1 }
       end
     end
+  end
+
+  context 'guard' do
+    subject { described_class.new(nil) }
+    its(:body) { should == {} }
+    its(:current) { should be_nil }
+    its(:parents) { should == [] }
+    its(:children) { should == [] }
   end
 end

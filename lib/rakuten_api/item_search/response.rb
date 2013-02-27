@@ -58,7 +58,7 @@ module RakutenApi
       end
 
       def simple_mapping
-        [] unless @body.include? "Items"
+        return [] unless @body.key? "Items"
         [].tap do |result|
           @body["Items"].each do |f|
             next unless f.include? 'Item'

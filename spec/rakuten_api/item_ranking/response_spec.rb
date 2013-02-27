@@ -61,4 +61,14 @@ describe RakutenApi::ItemRanking::Response do
     it { error_response.should be_error }
     it { error_response.error_message.should == 'wrong_parameter: page must be over 1' }
   end
+
+  context 'guard' do
+    subject { described_class.new }
+    its(:status) { should be_nil }
+    its(:body) { should == {} }
+    its(:page) { should == 1 }
+    its(:title) { should be_nil }
+    its(:last_build_date) { should be_nil }
+    its(:simple_mapping) { should == [] }
+  end
 end

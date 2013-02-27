@@ -12,8 +12,8 @@ module RakutenApi
       end
 
       def parents
-        return cache['parents'] if cache.include? 'parents'
-        [] unless @body.include? 'parents'
+        return cache['parents'] if cache.key? 'parents'
+        return [] unless @body.key? 'parents'
         cache['parents'] = [].tap do |result|
           @body['parents'].each do |f|
             next unless f.include? 'parent'
@@ -23,14 +23,14 @@ module RakutenApi
       end
 
       def current
-        return cache['current'] if cache.include? 'current'
-        return Model.new unless @body.include? "current"
+        return cache['current'] if cache.key? 'current'
+        return nil unless @body.key? 'current'
         cache['current'] = Model.from_hash(@body['current'])
       end
 
       def children
-        return cache['children'] if cache.include? 'children'
-        [] unless @body.include? "children"
+        return cache['children'] if cache.key? 'children'
+        return [] unless @body.key? 'children'
         cache['children'] = [].tap do |result|
           @body["children"].each do |f|
             next unless f.include? 'child'
