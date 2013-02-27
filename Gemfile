@@ -6,12 +6,10 @@ gemspec
 group :development, :test do
   gem "rake", "~> 10.0.3", require: false
   gem 'tapp', git: 'git://github.com/esminc/tapp.git'
-  gem 'rspec'
   gem 'vcr', git: 'git://github.com/vcr/vcr.git'
-
 end
 
-group :development do
+group :guard do
   gem 'guard'
   gem 'guard-rspec'
   gem 'libnotify', require: false
