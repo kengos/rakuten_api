@@ -1,3 +1,4 @@
+require 'faraday'
 require "rakuten_api/version"
 require "rakuten_api/dummy_module"
 require "rakuten_api/configuration"
