@@ -1,5 +1,7 @@
 # RakutenApi
 
+[![Build Status](https://travis-ci.org/kengos/rakuten_api.png?branch=master)](https://travis-ci.org/kengos/rakuten_api)
+
 楽天ウェブサービス(http://webservice.rakuten.co.jp/) のAPIクライアントです。
 
 以下のAPIに対応しています。
