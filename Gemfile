@@ -4,9 +4,11 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
-  gem 'rake',           '~> 0.9.2.2', :require => false
+  gem "rake", "~> 10.0.3", require: false
   gem 'tapp', git: 'git://github.com/esminc/tapp.git'
   gem 'rspec'
+  gem 'vcr', git: 'git://github.com/vcr/vcr.git'
+
 end
 
 group :development do

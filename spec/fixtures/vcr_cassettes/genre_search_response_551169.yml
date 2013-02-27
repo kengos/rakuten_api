@@ -7,56 +7,58 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v0.8.6
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
-      User-Agent:
-      - Ruby
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "RGF0ZQ==":
-      - !binary |-
-        VHVlLCAxOSBGZWIgMjAxMyAxMzoyNToxNCBHTVQ=
-      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2lu":
-      - !binary |-
-        Kg==
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjtjaGFyc2V0PVVURi04
-      !binary "Q29udGVudC1MYW5ndWFnZQ==":
-      - !binary |-
-        amEtSlA=
-      !binary "VmFyeQ==":
-      - !binary |-
-        QWNjZXB0LUVuY29kaW5n
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        MzU4
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        Y2xvc2U=
+      Date:
+      - Wed, 27 Feb 2013 14:49:57 GMT
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Language:
+      - ja-JP
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '358'
+      Connection:
+      - close
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAA5WTzUrDQBSF32XWWWSGpGnzBoL4AtJFsYMKtUj92YSAySDU
-        H3BhiRSVorQhQlupRZQG6cNMJ5O8hdPETZNG0t3cC/Pdc+ecMcBxrYWbpydA
-        361KYO+stayAboB93GzhrTrQVRXCUkVKGju1Iwx0wG790Bmye4sSn9pTSqbU
-        nlP7nZK26Cz8m3D0Bf6ubONz3AA6NAX+4LBRFwPEMCMpMpM0lJnEu3botYPv
-        Iet6KSgyTWkdCclQVWC+5uQcEY/1HdEpSI31KavU8OWRd3qJyuIkKENZLa+S
-        uHvHB1d5z/ffpkhdJUXWnLnX7LI4Q9XKKYczrg7jchYbPqH2K+94xfdVZKRp
-        KT9C/4fNXNafcNfaCBbbUErJtZ6pNV74TuGVy6i01srgYbCZGrkCUSq0EfmM
-        Lqyg/xR6M2qPKCHiCTeIhpKKRvCxjFfw1hM/QBiQp69q/gJ1PcPhzwMAAA==
+        eyJwYXJlbnRzIjpbXSwiY3VycmVudCI6eyJnZW5yZUlkIjo1NTExNjksImdl
+        bnJlTmFtZSI6IuWMu+iWrOWTgeODu+OCs+ODs+OCv+OCr+ODiOODu+S7i+it
+        tyIsImdlbnJlTGV2ZWwiOjF9LCJjaGlsZHJlbiI6W3siY2hpbGQiOnsiZ2Vu
+        cmVJZCI6NTUxMTcyLCJnZW5yZU5hbWUiOiLljLvnmYLoqIjmuKzlmagiLCJn
+        ZW5yZUxldmVsIjoyfX0seyJjaGlsZCI6eyJnZW5yZUlkIjoyMDE1NDEsImdl
+        bnJlTmFtZSI6IuWMu+iWrOWTgeODu+WMu+iWrOmDqOWkluWTgSIsImdlbnJl
+        TGV2ZWwiOjJ9fSx7ImNoaWxkIjp7ImdlbnJlSWQiOjU1MTE3NCwiZ2VucmVO
+        YW1lIjoi6KGb55Sf5Yy755mC5ZOBIiwiZ2VucmVMZXZlbCI6Mn19LHsiY2hp
+        bGQiOnsiZ2VucmVJZCI6MTAxMDU4LCJnZW5yZU5hbWUiOiLnpo/npYnjg7vk
+        u4vorbciLCJnZW5yZUxldmVsIjoyfX0seyJjaGlsZCI6eyJnZW5yZUlkIjoy
+        MDE1MjUsImdlbnJlTmFtZSI6IumBv+WmiuWFtyIsImdlbnJlTGV2ZWwiOjJ9
+        fSx7ImNoaWxkIjp7ImdlbnJlSWQiOjIwNTc4OSwiZ2VucmVOYW1lIjoi44Kz
+        44Oz44K/44Kv44OI44Os44Oz44K644O744Kx44Ki55So5ZOBIiwiZ2VucmVM
+        ZXZlbCI6Mn19LHsiY2hpbGQiOnsiZ2VucmVJZCI6NDAyNzcxLCJnZW5yZU5h
+        bWUiOiLou73luqblpLHnpoHnlKjlk4EiLCJnZW5yZUxldmVsIjoyfX0seyJj
+        aGlsZCI6eyJnZW5yZUlkIjo1NTExNzYsImdlbnJlTmFtZSI6IuOBneOBruS7
+        liIsImdlbnJlTGV2ZWwiOjJ9fSx7ImNoaWxkIjp7ImdlbnJlSWQiOjIwODI2
+        NCwiZ2VucmVOYW1lIjoi6KGb55Sf5pel55So5ZOBIiwiZ2VucmVMZXZlbCI6
+        Mn19LHsiY2hpbGQiOnsiZ2VucmVJZCI6NTA5MTIyLCJnZW5yZU5hbWUiOiLp
+        g7XpgIHmpJzoqLrjgq3jg4Pjg4giLCJnZW5yZUxldmVsIjoyfX0seyJjaGls
+        ZCI6eyJnZW5yZUlkIjoxMDEwNDgsImdlbnJlTmFtZSI6Iuayu+eZguapn+WZ
+        qOODu+eUqOWTgSIsImdlbnJlTGV2ZWwiOjJ9fV19
     http_version: 
-  recorded_at: Tue, 19 Feb 2013 13:25:14 GMT
+  recorded_at: Wed, 27 Feb 2013 14:49:57 GMT
 recorded_with: VCR 2.4.0
