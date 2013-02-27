@@ -10,9 +10,9 @@
 
 ## Supported Ruby Interpreters
 
-* MRI 1.9.3
-* MRI 2.0.0
-* RBX 19mode
+* 1.9.3
+* 2.0.0
+* Rubinius 19mode
 
 ## Installation
 
